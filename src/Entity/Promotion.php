@@ -1,35 +1,21 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Entity;
-
 
 class Promotion
 {
     /**
      * @var int
      */
-    protected $minAmount;
+    protected int $reduction;
 
     /**
-     * @var int
-     */
-    protected $reduction;
-
-    /**
-     * @var bool
-     */
-    protected $freeDelivery;
-
-    /**
-     * @param int $minAmount
      * @param int $reduction
-     * @param bool $freeDelivery
      */
-    public function __construct(int $minAmount, int $reduction, bool $freeDelivery)
+    public function __construct(int $reduction)
     {
-        $this->minAmount = $minAmount;
         $this->reduction = $reduction;
-        $this->freeDelivery = $freeDelivery;
     }
 }

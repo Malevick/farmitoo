@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 class Product
@@ -7,30 +9,29 @@ class Product
     /**
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * @var int
      */
-    protected $price;
+    protected int $price;
 
     /**
-     * @var string
+     * @var Brand
      */
-    protected $brand;
+    protected Brand $brand;
 
     /**
      * @param string $title
-     * @param int $price
-     * @param string $brand
+     * @param int    $price
+     * @param Brand  $brand
      */
-    public function __construct(string $title, int $price, string $brand)
+    public function __construct(string $title, int $price, Brand $brand)
     {
         $this->title = $title;
         $this->price = $price;
         $this->brand = $brand;
     }
-
 
     /**
      * @return string
@@ -38,5 +39,21 @@ class Product
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return Brand
+     */
+    public function getBrand(): Brand
+    {
+        return $this->brand;
     }
 }
