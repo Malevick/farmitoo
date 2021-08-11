@@ -45,14 +45,13 @@ class OrderUpdaterTest extends TestCase
         $this->shippingCalculator->expects($this->once())
         ->method('calculate')
         ->with($order)
-        ->willReturn(1600);
+        ->willReturn(4000);
 
         $this->orderUpdater->addProduct($order, $product3, 1);
 
         $this->assertCount(3, $order->getItems());
         $this->assertSame(111000, $order->getPrice());
-//        $this->assertEquals(1000, $order->getPromotionReduction());
-        $this->assertSame(1600, $order->getShippingFees());
+        $this->assertSame(4000, $order->getShippingFees());
         $this->assertSame(21100, $order->getVatPrice());
     }
 
