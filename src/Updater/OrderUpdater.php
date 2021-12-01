@@ -45,6 +45,12 @@ class OrderUpdater
         $shippingFees = $this->shippingCalculator->calculate($order);
         $vatPrice = $this->vatCalculator->calculate($order);
 
+        $price = 0;
+        foreach ($order->getItems() as $itemKey => $item) {
+            $price += ($item->getProduct()->getPrice() * $item->getQuantity());
+        }
+
+        $order->setPrice($price);
         $order->setShippingFees($shippingFees);
         $order->setVatPrice($vatPrice);
     }
