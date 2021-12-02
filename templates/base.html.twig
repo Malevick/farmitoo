@@ -2,9 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Mon panier{% endblock %}</title>
+        <title>Farmitoo - {% block title %}{% endblock %}</title>
     </head>
     <body>
+        <header>
+            <a href="{{ path('index') }}"><div id='icon'></div></a>
+        </header>
         {% block body %}{% endblock %}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}

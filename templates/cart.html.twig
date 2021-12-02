@@ -1,8 +1,90 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Mon panier{% endblock %}
 {% block body %}
+    <main class='container' id='cart'>
+        <h1>Mon panier <span class="cart-item-count">{{ order.items|length }}</span></h1>
+        <section class='row'>
+            <div class='col-sm-12 col-md-9'>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead class='table-dark'>
+                            <tr>
+                                <th scope='col'>Produit</th>
+                                <th scope='col'>Marque</th>
+                                <th scope='col'>Prix</th>
+                                <th scope='col'>Quantité</th>
+                                <th scope='col'>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.items %}
+                                <tr>
+                                    <td scope='row'>
+                                        {{ item.product.title }}
+                                    </td>
+                                    <td>
+                                        {{ item.product.brand.name }}
+                                    </td>
+                                    <td>
+                                        {{ item.product.price/100 }} €
+                                    </td>
+                                    <td>
+                                        {{ item.quantity }}
+                                    </td>
+                                    <td>
+                                        {{ (item.quantity * item.product.price)/100 }} €
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <h1>Panier</h1>
-    {{ order.total/100 }}€
+            <div class='col-sm-12 col-md-3'>
+                <div class='payment table-responsive'>
+                    <table class='table table-borderless'>
+                        <tbody>
+                            <tr>
+                                <td>Total HT</td>
+                                <td class='text-end'>{{ order.total/100 }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Promotion</td>
+                                <td class='text-end'>- {{ order.total/100 }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Frais de port HT</td>
+                                <td class='text-end'>{{ order.total/100 }} €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <table class='table table-borderless'>
+                        <tbody>
+                            <tr>
+                                <td>Total HT</td>
+                                <td class='text-end'>{{ order.total/100 }} €</td>
+                            </tr>
+                            <tr>
+                                <td>TVA</td>
+                                <td class='text-end'>{{ order.total/100 }} €</td>
+                            </tr>
+                            <tr>
+                                <td>Total TTC</td>
+                                <td class='text-end'>{{ order.total/100 }} €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-warning" type="button">Valider mon panier <i class="bi bi-cart-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </aside>
+    </main>
 
 {% endblock %}
