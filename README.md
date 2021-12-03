@@ -3,7 +3,7 @@
 Ceci est le repository pour le test technique de Farmitoo.
 Celui-ci est en 3 étapes consécutives.
 
-## 1/ Faire fonctionner les Tests  
+## 1/ Faire fonctionner les Tests
 Implémenter les méthodes pour que les tests fonctionnent.
 
 ## 2/ Afficher la page panier
@@ -11,7 +11,7 @@ Afficher le panier en twig tel que vous l'imagineriez pour une commande.
 Seule l'UX sera regardée, des compétences développées en front n'étant pas requises pour le poste (donc une mise en tableau, une utilisation d'un bootstrap, etc suffiront).
 
 ## 3/ Ajouter une gestion de Promotion
-Simulation de cas concret : L'équipe business veut pouvoir gérer des promotions, voici l'US à traiter: 
+Simulation de cas concret : L'équipe business veut pouvoir gérer des promotions, voici l'US à traiter:
 
 "En tant qu'utilisateur,
 Si j'ajoute un produit dans ma commande et si une promotion est applicable, alors sa réduction s'applique sur ma commande. Je peux retrouver la réduction appliquée sur ma page panier.
@@ -20,7 +20,7 @@ Seule la première promotion applicable sur ma commande (par ordre de création)
 
 Les conditions d'application possibles sont :
 - des dates de validités de la promotion
-- un montant minimum de commande 
+- un montant minimum de commande
 - un nombre de produit minimum dans la commande.
 
 Une promotion pourra posséder 1 ou plusieurs de ces conditions. Si plusieurs conditions sont configurées sur la promotion, alors la condition d'application de la promotion nécessite la validation de l'ensemble de ses conditions.
@@ -53,7 +53,16 @@ Dans notre cas, il est simplifié et le taux de TVA dépend seulement de la marq
 - Gallagher => 10%
 
 #### Info frais de port
-Les partenaires de Farmitoo ont des règles de calculs de frais de port très différentes. 
+Les partenaires de Farmitoo ont des règles de calculs de frais de port très différentes.
 Voici celles de notre cas :
 - Farmitoo : 12€ quelque soit le nombre de produits
 - Gallagher : 14€ par tranche de 2 produits (ex: 14€ pour 1 ou 2 produits et 28€ pour 3 produits)
+
+
+# Informations pour lancer le projet
+Afin de faire fonctionner correctement le projet, il est nécessaire de compiler le css avec Encore/Webpack avant de lancer le server Symfony. Après récupération via git, la marche à suivre est donc la suivante (les commandes sont celles pour yarn):
+- composer install
+- yarn install
+- yarn encore dev
+- symfony server:start
+Je vous souhaite une bonne installation, à très vite :)
