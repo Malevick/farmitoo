@@ -41,22 +41,21 @@
                     </table>
                 </div>
             </div>
-
             <div class='col-sm-12 col-md-3'>
                 <div class='payment table-responsive'>
                     <table class='table table-borderless'>
                         <tbody>
                             <tr>
                                 <td>Total HT</td>
-                                <td class='text-end'>{{ order.total/100 }} €</td>
+                                <td class='text-end'>{{ order.total/100 - order.vatPrice/100 - order.shippingFees/100}} €</td>
                             </tr>
                             <tr>
                                 <td>Promotion</td>
-                                <td class='text-end'>- {{ order.total/100 }} €</td>
+                                <td class='text-end'>- {{ order.promotionReduction/100 }} €</td>
                             </tr>
                             <tr>
                                 <td>Frais de port HT</td>
-                                <td class='text-end'>{{ order.total/100 }} €</td>
+                                <td class='text-end'>{{ order.shippingFees/100 }} €</td>
                             </tr>
                         </tbody>
                     </table>
@@ -65,11 +64,11 @@
                         <tbody>
                             <tr>
                                 <td>Total HT</td>
-                                <td class='text-end'>{{ order.total/100 }} €</td>
+                                <td class='text-end'>{{ order.total/100 - order.vatPrice/100 }} €</td>
                             </tr>
                             <tr>
                                 <td>TVA</td>
-                                <td class='text-end'>{{ order.total/100 }} €</td>
+                                <td class='text-end'>{{ order.vatPrice/100 }} €</td>
                             </tr>
                             <tr>
                                 <td>Total TTC</td>
@@ -83,8 +82,5 @@
                 </div>
             </div>
         </section>
-
-        </aside>
     </main>
-
 {% endblock %}
