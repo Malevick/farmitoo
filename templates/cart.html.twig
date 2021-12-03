@@ -27,13 +27,13 @@
                                         {{ item.product.brand.name }}
                                     </td>
                                     <td>
-                                        {{ item.product.price/100 }} €
+                                        {{ (item.product.price/100)|number_format(2, ',', ' ') }} €
                                     </td>
                                     <td>
                                         {{ item.quantity }}
                                     </td>
                                     <td>
-                                        {{ (item.quantity * item.product.price)/100 }} €
+                                        {{ ((item.quantity * item.product.price)/100)|number_format(2, ',', ' ') }} €
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -47,15 +47,17 @@
                         <tbody>
                             <tr>
                                 <td>Total HT</td>
-                                <td class='text-end'>{{ order.total/100 - order.vatPrice/100 - order.shippingFees/100}} €</td>
+                                <td class='text-end'>{{ (order.price/100)|number_format(2, ',', ' ') }} €</td>
                             </tr>
-                            <tr>
-                                <td>Promotion</td>
-                                <td class='text-end'>- {{ order.promotionReduction/100 }} €</td>
-                            </tr>
+                            {% if order.promotionReduction > 0 %}
+                                <tr class='promotion'>
+                                    <td>Promotion</td>
+                                    <td class='text-end'>- {{ (order.promotionReduction/100)|number_format(2, ',', ' ') }} €</td>
+                                </tr>
+                            {% endif %}
                             <tr>
                                 <td>Frais de port HT</td>
-                                <td class='text-end'>{{ order.shippingFees/100 }} €</td>
+                                <td class='text-end'>{{ (order.shippingFees/100)|number_format(2, ',', ' ') }} €</td>
                             </tr>
                         </tbody>
                     </table>
@@ -64,20 +66,20 @@
                         <tbody>
                             <tr>
                                 <td>Total HT</td>
-                                <td class='text-end'>{{ order.total/100 - order.vatPrice/100 }} €</td>
+                                <td class='text-end'>{{ (order.total/100 - order.vatPrice/100)|number_format(2, ',', ' ') }} €</td>
                             </tr>
                             <tr>
                                 <td>TVA</td>
-                                <td class='text-end'>{{ order.vatPrice/100 }} €</td>
+                                <td class='text-end'>{{ (order.vatPrice/100)|number_format(2, ',', ' ') }} €</td>
                             </tr>
-                            <tr>
+                            <tr class='fw-bold'>
                                 <td>Total TTC</td>
-                                <td class='text-end'>{{ order.total/100 }} €</td>
+                                <td class='text-end'>{{ (order.total/100)|number_format(2, ',', ' ') }} €</td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="d-grid">
-                        <button type="button" class="btn btn-warning" type="button">Valider mon panier <i class="bi bi-cart-check"></i></button>
+                        <button type="button" class="btn btn-warning validate" type="button">Valider mon panier <i class="bi bi-cart-check"></i></button>
                     </div>
                 </div>
             </div>

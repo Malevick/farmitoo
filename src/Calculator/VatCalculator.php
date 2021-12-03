@@ -18,7 +18,7 @@ class VatCalculator
         $vat = 0;
 
         foreach ($order->getItems() as $itemKey => $item) {
-            $vat += (($item->getProduct()->getBrand()->getVat() * $item->getProduct()->getPrice() / 100) * $item->getQuantity());
+            $vat += $item->getProduct()->getBrand()->getVat() * $item->getProduct()->getPrice() / 100 * $item->getQuantity();
         }
 
         return $vat;

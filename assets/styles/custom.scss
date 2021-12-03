@@ -7,7 +7,7 @@
 /** VARIABLES **/
 $main-color: #f0a923;
 $second-color: #2b9545;
-$third-color: #dedee2;
+$third-color: #ffffff;
 $font: Lato, sans-serif;
 
 /** BASICS **/
@@ -49,6 +49,12 @@ header {
             border-radius: 3px;
             padding: 0.5rem;
         }
+    }
+    .promotion{
+        color: $second-color;
+    }
+    .validate{
+        color: $third-color;
     }
 }
 

@@ -16,23 +16,23 @@ class ShippingCalculator
      */
     public function calculate(Order $order): int
     {
-        $shipping = 0;
+        $shippingTotal = 0;
 
         foreach ($order->getItems() as $itemKey => $item) {
-            $shippingCalc = 0;
+            $itemShipping = 0;
             //Si la méthode de calcul se fait par tranche
-            if($item->getProduct()->getBrand()->getShippingCalculation() instanceof ShippingCalculationBySlice){
+            if ($item->getProduct()->getBrand()->getShippingCalculation() instanceof ShippingCalculationBySlice) {
                 $shippingFees = $item->getProduct()->getBrand()->getShippingCalculation()->getShippingFees();
                 $shippingSlice = $item->getProduct()->getBrand()->getShippingCalculation()->getCountItemBySlice();
-                $shippingCalc = intval($shippingFees * ceil( $item->getQuantity() / $shippingSlice));
+                $itemShipping = $shippingFees * intval(ceil($item->getQuantity() / $shippingSlice));
             }
             //Si la méthode de calcul est fixe
-            else{
-                $shippingCalc = $item->getProduct()->getBrand()->getShippingCalculation()->getShippingFees();
+            else {
+                $itemShipping = $item->getProduct()->getBrand()->getShippingCalculation()->getShippingFees();
             }
-            $shipping += $shippingCalc;
+            $shippingTotal += $itemShipping;
         }
 
-        return $shipping;
+        return $shippingTotal;
     }
 }

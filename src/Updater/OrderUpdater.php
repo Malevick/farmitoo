@@ -47,7 +47,7 @@ class OrderUpdater
 
         $price = 0;
         foreach ($order->getItems() as $itemKey => $item) {
-            $price += ($item->getProduct()->getPrice() * $item->getQuantity());
+            $price += $item->getProduct()->getPrice() * $item->getQuantity();
         }
 
         $order->setPrice($price);
