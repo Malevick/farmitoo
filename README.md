@@ -65,4 +65,5 @@ Afin de faire fonctionner correctement le projet, il est nécessaire de compiler
 - yarn install
 - yarn encore dev
 - symfony server:start
+
 Je vous souhaite une bonne installation, à très vite :)
